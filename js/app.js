@@ -1,7 +1,9 @@
 var App = Ember.Application.create();
 
-App.Router.map(function(){
-  this.resource('tables'); // /#/tables
+App.Router.map(function(){                       // /#/tables
+  this.resource('tables', function(){
+    this.resource('table', {path: ':table_id'}); // /#/tables/1
+  });
 });
 
 App.TablesRoute = Ember.Route.extend({
