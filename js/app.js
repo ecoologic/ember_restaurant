@@ -6,6 +6,15 @@ App.Router.map(function(){                       // /#/tables
   });
 });
 
+App.ApplicationRoute = Ember.Route.extend({
+  setupController: function() {
+    // setupController to initialize a ctrl always active
+    // controllerFor: the instanciated object for any controller
+    // 'food' shortcut for App.FoodController
+    this.controllerFor('food').set('model', App.Food.find());
+  }
+});
+
 App.TablesRoute = Ember.Route.extend({
   model: function(params) {
     return App.Table.find(params.table_id);
@@ -15,6 +24,8 @@ App.TablesRoute = Ember.Route.extend({
 App.TablesController = Ember.ArrayController.extend({});
 
 App.TableController = Ember.ObjectController.extend({});
+
+App.FoodController = Ember.ArrayController.extend({});
 
 ////////////////////////////////////
 // Models

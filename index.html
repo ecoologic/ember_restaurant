@@ -44,6 +44,9 @@
 
     <script type="text/x-handlebars" data-template-name="table">
       <div class="row">
+        <div class="three columns">
+          {{render "food"}}
+        </div>
         <div class="nine columns">
           <h2>Table <span>{{id}}</span></h2>
         </div>
@@ -55,6 +58,19 @@
       {{#each table in controller}}
         {{#linkTo "table" table class="panel six columns"}} {{table.id}} {{/linkTo}}
       {{/each}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="food">
+      <ul id="menu">
+        {{#each controller}}
+        <li>
+          <a href="#" {{action "addFood" this}}>
+            <img {{bindAttr src="imageUrl" alt="name" title="name"}}>
+            <p>{{name}}</p>
+          </a>
+        </li>
+        {{/each}}
+      </ul>
     </script>
 
     <script src="js/libs/jquery-1.8.3.min.js"></script>
